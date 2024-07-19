@@ -1,32 +1,19 @@
 import { Header } from "@/components/Header";
 import {
-  DynamicEnvironmentId,
-  DynamicContextProvider,
-  EthereumWalletConnectors,
-  EthersExtension,
-  DynamicWidget,
-  useDynamicContext
+  DynamicWidget
 } from "@/utils/Dynamic";
+import {
+  useDynamicContext,
+  useUserWallets,
+  Wallet,
+} from "@dynamic-labs/sdk-react-core";
 // import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  // const { isAuthenticated, user } = useDynamicContext();
+  const { isAuthenticated, user } = useDynamicContext();
 
   return (
-    <DynamicContextProvider
-      settings={{
-        environmentId: DynamicEnvironmentId,
-        walletConnectors: [EthereumWalletConnectors],
-        walletConnectorExtensions: [EthersExtension],
-        appName: "BLOX",
-        appLogoUrl:
-          "@/assets/blox400.jpg",
-        privacyPolicyUrl: "/privacy-policy",
-        termsOfServiceUrl: "/terms-of-service",
-      }}
-    >
-      {/* {isAuthenticated ? */}
       <main className="flex min-h-screen flex-col items-center justify-between p-24">
 
         <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -99,8 +86,5 @@ export default function Home() {
           <DynamicWidget buttonContainerClassName="justify-center items-center" />
         </div>
       </main>
-      {/* : <p>Logged In</p>
-} */}
-    </DynamicContextProvider>
   );
 }

@@ -12,6 +12,7 @@
     "@dynamic-labs/ethereum": "^2.3.0",
     "@dynamic-labs/ethers-v6": "^2.3.0",
     "@dynamic-labs/sdk-react-core": "^2.3.0",
+    "mysql2": "^3.10.2",
     "next": "14.2.5",
     "pino-pretty": "^11.2.1",
     "react": "^18",

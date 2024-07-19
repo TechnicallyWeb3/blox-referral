@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import {
+  DynamicEnvironmentId,
+  DynamicContextProvider,
+  EthereumWalletConnectors,
+  EthersExtension
+} from "@/utils/Dynamic";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,7 +22,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <DynamicContextProvider
+        settings={{
+          environmentId: DynamicEnvironmentId,
+          walletConnectors: [EthereumWalletConnectors],
+          walletConnectorExtensions: [EthersExtension],
+          appName: "BLOX",
+          appLogoUrl:
+            "@/assets/blox400.jpg",
+          privacyPolicyUrl: "/privacy-policy",
+          termsOfServiceUrl: "/terms-of-service",
+        }}
+      >
+        <body className={inter.className}>{children}</body>
+      </DynamicContextProvider>
     </html>
   );
 }
